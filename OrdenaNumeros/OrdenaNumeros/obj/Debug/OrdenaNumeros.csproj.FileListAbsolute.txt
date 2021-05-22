@@ -1,0 +1,10 @@
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\bin\Debug\OrdenaNumeros.exe.config
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\bin\Debug\OrdenaNumeros.exe
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\bin\Debug\OrdenaNumeros.pdb
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.csprojAssemblyReference.cache
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.Form1.resources
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.Properties.Resources.resources
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.csproj.GenerateResource.cache
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.csproj.CoreCompileInputs.cache
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.exe
+C:\Users\Valeria Gonzalez\source\repos\Proyectofinalprogramacion\OrdenaNumeros\OrdenaNumeros\obj\Debug\OrdenaNumeros.pdb
