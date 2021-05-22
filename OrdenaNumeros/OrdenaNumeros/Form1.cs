@@ -6,20 +6,20 @@ namespace OrdenaNumeros
 {
     public partial class Form1 : Form
     {
-        private Logic miJuego;
+        private LogicaOrdenaNumeros miLogica;
 
         /// <summary>
         /// Constructor de la clase Form1
         /// </summary>
         public Form1()
         {
-            miJuego = new Logic();
+            miLogica = new LogicaOrdenaNumeros();
 
             InitializeComponent();
 
-            //Aqui se invocan los metodos que inicializan las matrices
-            miJuego.InicializaMatrizBotones(boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10, boton11, boton12, boton13, boton14, boton15, boton16);
-            miJuego.InicializaMatrizValores();
+            miLogica.SetButtons(boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10, boton11, boton12, boton13, boton14, boton15, boton16);
+
+            miLogica.InicializaMatrizValores();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace OrdenaNumeros
         private void Form1_Load(object sender, EventArgs e)
         {
             //Se invoca la inicialización de botones
-            miJuego.InicializaEtiquetaBotones(); //lógico
+            miLogica.InicializaEtiquetaBotones();
         }
 
         /// <summary>
@@ -37,97 +37,99 @@ namespace OrdenaNumeros
         private void menuItemReiniciaJuego_Click(object sender, EventArgs e)
         {
             //Se invoca la inicialización de botones
-            miJuego.InicializaEtiquetaBotones();
+            miLogica.InicializaEtiquetaBotones();
 
             //Se activan los botones para que puedan ser usados 
-            miJuego.ActivaBotones();
+            miLogica.ActivaBotones();
 
             //Se le coloca el color de fondo predeterminado
-            miJuego.InicializaFondoBotones();
+            miLogica.InicializaFondoBotones();
 
             //Se da la notificación si el valor se encuentra en la posición correcta
-            miJuego.NotificaPosicionCorrectaValor();
+            miLogica.NotificaPosicionCorrectaValor();
         }
 
+        #region "Botones"
         private void boton1_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(1, 0, 0);
+            miLogica.EvaluaBotonPresionado(1, 0, 0);
         }
 
         private void boton2_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(2, 0, 1);
+            miLogica.EvaluaBotonPresionado(2, 0, 1);
         }
 
         private void boton3_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(3, 0, 2);
+            miLogica.EvaluaBotonPresionado(3, 0, 2);
         }
 
         private void boton4_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(4, 0, 3);
+            miLogica.EvaluaBotonPresionado(4, 0, 3);
         }
 
         private void boton5_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(5, 1, 0);
+            miLogica.EvaluaBotonPresionado(5, 1, 0);
         }
 
         private void boton6_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(6, 1, 1);
+            miLogica.EvaluaBotonPresionado(6, 1, 1);
         }
 
         private void boton7_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(7, 1, 2);
+            miLogica.EvaluaBotonPresionado(7, 1, 2);
         }
 
         private void boton8_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(8, 1, 3);
+            miLogica.EvaluaBotonPresionado(8, 1, 3);
         }
 
         private void boton9_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(9, 2, 0);
+            miLogica.EvaluaBotonPresionado(9, 2, 0);
         }
 
         private void boton10_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(10, 2, 1);
+            miLogica.EvaluaBotonPresionado(10, 2, 1);
         }
 
         private void boton11_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(11, 2, 2);
+            miLogica.EvaluaBotonPresionado(11, 2, 2);
         }
 
         private void boton12_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(12, 2, 3);
+            miLogica.EvaluaBotonPresionado(12, 2, 3);
         }
 
         private void boton13_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(13, 3, 0);
+            miLogica.EvaluaBotonPresionado(13, 3, 0);
         }
 
         private void boton14_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(14, 3, 1);
+            miLogica.EvaluaBotonPresionado(14, 3, 1);
         }
 
         private void boton15_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(15, 3, 2);
+            miLogica.EvaluaBotonPresionado(15, 3, 2);
         }
 
         private void boton16_Click(object sender, EventArgs e)
         {
-            miJuego.EvaluaBotonPresionado(16, 3, 3);
+            miLogica.EvaluaBotonPresionado(16, 3, 3);
         }
+        #endregion
 
         /// <summary>
         /// Evento para item salir que cierra la aplicación

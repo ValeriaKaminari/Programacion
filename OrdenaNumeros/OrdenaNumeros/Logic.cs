@@ -1,54 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace OrdenaNumeros
 {
-    public class Logic
+    public class LogicaOrdenaNumeros
     {
-
         //Atributos propios del juego
         private int[,] matrizValores;
-        private Button[,] matrizBotones; //creo que el botón se puede quitar por ser objeto
+        private Button[,] matrizBotones;
         private int posicionFila, posicionColumna;
+        private Button[] botones;
 
-        public Logic()
+        public LogicaOrdenaNumeros()
         {
             posicionFila = 0;
             posicionColumna = 0;
 
             matrizBotones = new Button[4, 4];
             matrizValores = new int[4, 4];
+            botones = new Button[16];
         }
 
-        /// <summary>
-        /// Inicializa la matriz de botones, con los botones del interfaz
-        /// </summary>
-        public void InicializaMatrizBotones(Button boton1, Button boton2, Button boton3, Button boton4, Button boton5, Button boton6, Button boton7, Button boton8, Button boton9, Button boton10, Button boton11, Button boton12, Button boton13, Button boton14, Button boton15, Button boton16)
+        public void SetButtons(Button boton1, Button boton2, Button boton3, Button boton4, Button boton5, Button boton6, Button boton7, Button boton8, Button boton9, Button boton10, Button boton11, Button boton12, Button boton13, Button boton14, Button boton15, Button boton16)
         {
-            matrizBotones[0, 0] = boton1;
-            matrizBotones[0, 1] = boton2;
-            matrizBotones[0, 2] = boton3;
-            matrizBotones[0, 3] = boton4;
+            botones[0] = boton1;
+            botones[1] = boton2;
+            botones[2] = boton3;
+            botones[3] = boton4;
+            botones[4] = boton5;
+            botones[5] = boton6;
+            botones[6] = boton7;
+            botones[7] = boton8;
+            botones[8] = boton9;
+            botones[9] = boton10;
+            botones[10] = boton11;
+            botones[11] = boton12;
+            botones[12] = boton13;
+            botones[13] = boton14;
+            botones[14] = boton15;
+            botones[15] = boton16;
 
-            matrizBotones[1, 0] = boton5;
-            matrizBotones[1, 1] = boton6;
-            matrizBotones[1, 2] = boton7;
-            matrizBotones[1, 3] = boton8;
+            SetPositionButtons();
+        }
 
-            matrizBotones[2, 0] = boton9;
-            matrizBotones[2, 1] = boton10;
-            matrizBotones[2, 2] = boton11;
-            matrizBotones[2, 3] = boton12;
+        public void SetPositionButtons()
+        {
+            int botonNumero = 0;
 
-            matrizBotones[3, 0] = boton13;
-            matrizBotones[3, 1] = boton14;
-            matrizBotones[3, 2] = boton15;
-            matrizBotones[3, 3] = boton16;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    matrizBotones[i, j] = botones[botonNumero];
+
+                    botonNumero++;
+                }
+            }
         }
 
         /// <summary>
@@ -67,6 +81,7 @@ namespace OrdenaNumeros
                     valor++;
                 }
             }
+
             //Luego, procedemos a cambiar los valores de posición de manera aleatoria
 
             Random aleatorio = new Random();
@@ -84,6 +99,8 @@ namespace OrdenaNumeros
 
                     matrizValores[i, j] = matrizValores[posicionHorizontal, posicionVertical];
                     matrizValores[posicionHorizontal, posicionVertical] = valorTemporal;
+
+
                 }
             }
         }
@@ -197,44 +214,6 @@ namespace OrdenaNumeros
         }
 
         /// <summary>
-        /// Notifica que el número se encuentra en la posición correcta, cambiando el color de fondo del botón
-        /// </summary>
-        public void NotificaPosicionCorrectaValor()
-        {
-
-            int[,] valoresEsperados = new int[4, 4];
-            int valor = 1;
-
-            int totalFilas = valoresEsperados.GetLength(0);
-            int totalColumnas = valoresEsperados.GetLength(1);
-
-            //Aqui llenamos la matriz de los valores esperados
-            for (int i = 0; i < totalFilas; i++)
-                for (int j = 0; j < totalColumnas; j++)
-                {
-                    valoresEsperados[i, j] = valor;
-                    valor++;
-                }
-
-            //Al finalizar el juego, en la posición 4,4 se encuentra el 0
-            valoresEsperados[3, 3] = 0;
-
-            //Ahora comparamos con los valores actuales para saber si están en la posición correcta
-            for (int i = 0; i < totalFilas; i++)
-                for (int j = 0; j < totalColumnas; j++)
-                {
-                    if (matrizValores[i, j] == valoresEsperados[i, j])
-                        matrizBotones[i, j].BackColor = Color.LightGreen;
-                    else
-                        matrizBotones[i, j].BackColor = Color.LightGray;
-
-                    //El botón que tiene el 0 no deberá cambiar de color
-                    if (matrizValores[i, j] == 0)
-                        matrizBotones[i, j].BackColor = Color.LightGray;
-                }
-        }
-
-        /// <summary>
         /// Esta función valida si todos los números están organizados
         /// </summary>
         public void EvaluaCondicionVictoria()
@@ -297,6 +276,47 @@ namespace OrdenaNumeros
                     matrizBotones[i, j].Enabled = true;
         }
 
+        /// <summary>
+        /// Notifica que el número se encuentra en la posición correcta, cambiando el color de fondo del botón
+        /// </summary>
+        public void NotificaPosicionCorrectaValor()
+        {
+
+            int[,] valoresEsperados = new int[4, 4];
+            int valor = 1;
+
+            int totalFilas = valoresEsperados.GetLength(0);
+            int totalColumnas = valoresEsperados.GetLength(1);
+
+            //Aqui llenamos la matriz de los valores esperados
+            for (int i = 0; i < totalFilas; i++)
+                for (int j = 0; j < totalColumnas; j++)
+                {
+                    valoresEsperados[i, j] = valor;
+                    valor++;
+                }
+
+            //Al finalizar el juego, en la posición 4,4 se encuentra el 0
+            valoresEsperados[3, 3] = 0;
+
+            //Ahora comparamos con los valores actuales para saber si están en la posición correcta
+            for (int i = 0; i < totalFilas; i++)
+                for (int j = 0; j < totalColumnas; j++)
+                {
+                    if (matrizValores[i, j] == valoresEsperados[i, j])
+                        matrizBotones[i, j].BackColor = Color.LightGreen;
+                    else
+                        matrizBotones[i, j].BackColor = Color.LightGray;
+
+                    //El botón que tiene el 0 no deberá cambiar de color
+                    if (matrizValores[i, j] == 0)
+                        matrizBotones[i, j].BackColor = Color.LightGray;
+                }
+        }
+
+        /// <summary>
+        /// Método que inicializa el fondo de los botones con un color gris claro
+        /// </summary>
         public void InicializaFondoBotones()
         {
             int totalFilas = matrizBotones.GetLength(0);
@@ -308,8 +328,68 @@ namespace OrdenaNumeros
                     matrizBotones[i, j].BackColor = Color.LightGray;
         }
 
+        public int Factorial(int numero)
+        {
+            if (numero == 0)
+                return 1;
 
+            int result = 1;
+
+            for (int i = 1; i <= numero; i++)
+            {
+                result *= i;
+            }
+
+            return result;
+        }
+
+        public int Letras(string palabra)
+        {
+            int letras = 0;
+            char[] letrasGuardadas = palabra.ToCharArray();
+
+            foreach (char i in letrasGuardadas)
+            {
+                if (!char.IsNumber(i) && !char.IsPunctuation(i) && !char.IsWhiteSpace(i))
+                    letras++;
+            }
+
+            return letras;
+        }
+
+        public string CifraPalabra(string palabraCifrada)
+        {
+            string palabraTemporal = palabraCifrada.ToLower();
+            string resultado = "";
+            char[] letrasCambiar = palabraCifrada.ToCharArray();
+
+            foreach (char i in letrasCambiar)
+            {
+                string valorDeReemplazo = "0";
+                switch (i)
+                {
+                    case 'a':
+                    case 'b':
+                    case 'c':
+                        valorDeReemplazo = "1";
+                        break;
+                    case 'q':
+                    case 'r':
+                    case 's':
+                        valorDeReemplazo = "2";
+                        break;
+                    case 't':
+                    case 'u':
+                    case 'v':
+                        valorDeReemplazo = "3";
+                        break;
+                    default:
+                        valorDeReemplazo = i.ToString();
+                        break;
+                }
+                resultado += valorDeReemplazo;
+            }
+            return resultado;
+        }
     }
-
 }
-
